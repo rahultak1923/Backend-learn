@@ -1,11 +1,10 @@
 import './App.css';
-import FormExample from './pages/FormExample';
+import Index from './pages/Index';
 
 function App() {
- 
   return (
     <div className="App">
-     <FormExample/>
+     <Index/>
     </div>
   );
 }

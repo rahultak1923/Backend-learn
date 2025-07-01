@@ -1,8 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const title = require('./routes/title');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 const PORT = 8000;
 

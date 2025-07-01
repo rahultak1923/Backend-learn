@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 const Dashboard = () => {
   let location = useLocation();
   useEffect(()=> {
-    console.log(location.pathname);
+    // console.log(location.pathname);
   },[location])
   return (
     <div className='g-sidenav-show   bg-gray-100'>

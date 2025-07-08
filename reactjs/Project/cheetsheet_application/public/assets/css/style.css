@@ -3,7 +3,8 @@ body{
 }
 /* Navbar Custom Styles */
 .custom-navbar {
-    background-color: #5e72e4;
+    /* background-color: #5e72e4; */
+    background-color: #7c34d4;
     /* background-color: #24272a; */
     border-radius: 10px;
     padding: 10px;

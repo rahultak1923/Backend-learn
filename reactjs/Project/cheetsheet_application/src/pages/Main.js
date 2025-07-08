@@ -11,7 +11,7 @@ const Main = () => {
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb custom-breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:;">Pages</a></li>
-        <li class="breadcrumb-item active" aria-current="page">HTML Code</li>
+        {/* <li class="breadcrumb-item " aria-current="page">HTML Code</li> */}
       </ol>
       <h6 class="dashboard-title">HTML</h6>
     </nav>

@@ -4,3 +4,6 @@ export const TitleData = async()=>{
     });
     return await response.json();
 }
+export const CreateTitle = async()=>{
+    
+}

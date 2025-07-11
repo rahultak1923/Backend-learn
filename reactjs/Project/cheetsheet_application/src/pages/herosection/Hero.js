@@ -50,7 +50,7 @@ const Hero = () => {
   <div className="row">
     <div className="col-md-12">
       <div className="form-group">
-        <label className="form-control-label">Add Code</label>
+        <label className="form-control-label">Add Code Title</label>
         <input
           className="form-control"
           type="text"
@@ -64,8 +64,8 @@ const Hero = () => {
 
     <div className="col-md-12">
       <div className="form-group">
-        <label className="form-control-label">Code Description</label>
-        <input
+        <label className="form-control-label">Add your Code & Description</label>
+        <textarea
           className="form-control"
           type="text"
           name="description"

@@ -21,4 +21,16 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", async(req,res)=>{
+  try{
+    const titleid = req.params.id;
+    const deletedtitle = await TitleSchema.findByIdAndDelete(titleid);
+    return res.status(200).json({message:"the code is deleted", title: deletedtitle})
+  }catch(error){
+    return res.status(500).json({error: "failed to deleted code ", error})
+  }
+})
+
+
+
 module.exports = router

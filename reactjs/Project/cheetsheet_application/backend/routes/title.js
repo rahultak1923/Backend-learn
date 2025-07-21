@@ -33,7 +33,6 @@ router.delete("/delete/:id", async(req,res)=>{
 
 router.put("/update/:id", async(req,res)=>{
   try{
-
     const titleid = req.params.id;
     const {title, description} = req.body;
  

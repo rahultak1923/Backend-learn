@@ -21,5 +21,5 @@ const userSchema = new Schema ({
 },{timestamps:true});
 
 const UserSchema = model('user',userSchema) 
-UserSchema.createIndexes();
+// UserSchema.createIndexes();
 module.exports = UserSchema;

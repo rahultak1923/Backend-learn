@@ -75,26 +75,16 @@ router.post("/login", [
             return res.status(400).json({ errors: errors.array() })
         }
 
-        let user = await UserSchema.findOne({email: req.body.email});
-        if(user){
-            return res.status(400).json({error:'sorry a user with this email already exists'})
-        }
-        const salt = await bcrypt.genSalt(10);
-        const secPass = await bcrypt.hash(req.body.password, salt);
-        user = await UserSchema.create({
-            username:req.body.username,
-            password: secPass,
-            email: req.body.email,
-        })
-        const data ={
-            user:{
-                id:user.id
+        const {email, password}= req.body;
+        try {
+            let user = UserSchema.findOne({email});
+            if(!user){
+                
             }
+        } catch (error) {
+            
         }
-        
-        const authtoken = jwt.sign(data, JWT_SECRET)
-       
-        return res.json({ authtoken })
+      
 
 
     } catch (error) {

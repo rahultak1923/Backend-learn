@@ -77,13 +77,25 @@ router.post("/login", [
 
         const {email, password}= req.body;
         try {
-            let user = UserSchema.findOne({email});
+            let user = await UserSchema.findOne({email});
             if(!user){
-                
+               return res.status(400).json({error:"please try to login with correct credentials"}) 
             }
-        } catch (error) {
-            
-        }
+            const passwordCompare = await bcrypt.compare(password, user.password);
+            if(!passwordCompare){
+               return res.status(400).json({error:"please try to login with correct credentials password is wrong"})  
+            }
+            const data = {
+                user:{
+                    id: user.id
+                }
+            }
+            const authtoken = jwt.sign(data, JWT_SECRET);
+            res.json({authtoken})
+        }  catch (error) {
+        console.error("error creating user", error)
+        return res.status(500).json({ error: "Internal server error" })
+    }
       
 
 

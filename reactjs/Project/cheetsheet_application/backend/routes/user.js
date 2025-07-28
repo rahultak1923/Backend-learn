@@ -3,6 +3,7 @@ const UserSchema = require('../models/user')
 const { body, validationResult } = require('express-validator');
 const bcrypt = require ("bcryptjs");
 const jwt = require("jsonwebtoken");
+const fetchuser = require('../middleware/fetchuser');
 
 
 const router = Router()
@@ -100,6 +101,19 @@ router.post("/login", [
 
 
     } catch (error) {
+        console.error("error creating user", error)
+        return res.status(500).json({ error: "Internal server error" })
+    }
+})
+
+// route 3 : Get loggedin User Details using : POST . login required
+
+router.post('/getuser',fetchuser, async(req,res)=>{
+    try{
+        userId = req.user.id;
+        const user = await UserSchema.findById(userId).select("-password")
+res.send(user)
+    }catch (error) {
         console.error("error creating user", error)
         return res.status(500).json({ error: "Internal server error" })
     }

@@ -1,7 +1,11 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, default: mongoose } = require("mongoose");
 
 
 const titleSchema = new Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"user"
+    },
     title:{
         type:String,
         require:true,

@@ -33,16 +33,46 @@ router.post("/add", fetchuser,[
   }
 });
 
-router.delete("/delete/:id", async(req,res)=>{
-  try{
-    const titleid = req.params.id;
-    const deletedtitle = await TitleSchema.findByIdAndDelete(titleid);
-    return res.status(200).json({message:"the code is deleted", title: deletedtitle})
-  }catch(error){
-    return res.status(500).json({error: "failed to deleted code ", error})
-  }
-})
+// router.delete("/delete/:id", fetchuser, async(req,res)=>{
+//   try{
+//     const titleid = req.params.id;
+//     const deletedtitle = await TitleSchema.findByIdAndDelete(titleid);
+//     return res.status(200).json({message:"the code is deleted", title: deletedtitle})
+//   }catch(error){
+//     return res.status(500).json({error: "failed to deleted code ", error})
+//   }
+// })
 
+router.delete("/delete/:id", fetchuser, async (req, res) => {
+  try {
+    const titleid = req.params.id;
+    // const { title, description } = req.body;
+
+    if (!titleid) {
+      return res.status(400).json({ error: "Code ID is required" });
+    }
+
+    // ✅ Fetch the existing document
+    const existingTitle = await TitleSchema.findById(titleid);
+
+    if (!existingTitle) {
+      return res.status(404).json({ error: "Code not found" });
+    }
+
+    // ✅ Check ownership
+    if (existingTitle.user.toString() !== req.user.id) {
+      return res.status(401).send("Not allowed");
+    }
+
+    // ✅ Proceed to update
+   const deletedtitle = await TitleSchema.findByIdAndDelete(titleid);
+    return res.status(200).json({message:"the code is deleted", title: deletedtitle})
+
+  } catch (error) {
+    console.error("Error updating codes:", error);
+    return res.status(500).json({ error: "Failed to delete code" });
+  }
+});
 router.put("/update/:id", fetchuser, async (req, res) => {
   try {
     const titleid = req.params.id;

@@ -5,11 +5,14 @@ import Home from './pages/Home';
 // import Addjewellery from './pages/addjewellery/Addjewellery';
 import Edittitle from './pages/editjewellery/Edittitle';
 import Hero from './pages/herosection/Hero';
+import CodeState from './context/code/CodeState';
 // import Aboutedit from './pages/aboutsection/Aboutedit';
 // import Title from './pages/titlesection/Title';
 
 function App() {
   return (
+    <CodeState>
+      
     <div className="">
       <BrowserRouter>
    <Dashboard/>
@@ -23,6 +26,7 @@ function App() {
       </Routes>
       </BrowserRouter>
     </div>
+    </CodeState>
   );
 }
 

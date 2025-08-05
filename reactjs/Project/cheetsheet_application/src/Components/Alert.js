@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Alert = () => {
+const Alert = (props) => {
   return (
     <div>
-      <div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
+      <div class="alert alert-primary text-center text-white" role="alert">
+{props.message}
 </div>
     </div>
   )

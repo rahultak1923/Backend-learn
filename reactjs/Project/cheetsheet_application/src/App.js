@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Edittitle from './pages/editjewellery/Edittitle';
 import Hero from './pages/herosection/Hero';
 import CodeState from './context/code/CodeState';
+import Alert from './Components/Alert';
 // import Aboutedit from './pages/aboutsection/Aboutedit';
 // import Title from './pages/titlesection/Title';
 
@@ -16,6 +17,7 @@ function App() {
     <div className="">
       <BrowserRouter>
    <Dashboard/>
+        <Alert message= "this is the amazing website the coder's"/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         {/* <Route path='/addjewellery' element={<Addjewellery/>}/> */}

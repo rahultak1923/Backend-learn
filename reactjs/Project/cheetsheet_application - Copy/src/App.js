@@ -1,35 +1,33 @@
-import './App.css';
-import Dashboard from './pages/Dashboard';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-// import Addjewellery from './pages/addjewellery/Addjewellery';
-import Edittitle from './pages/editjewellery/Edittitle';
-import Hero from './pages/herosection/Hero';
-import CodeState from './context/code/CodeState';
-import Alert from './Components/Alert';
-// import Aboutedit from './pages/aboutsection/Aboutedit';
-// import Title from './pages/titlesection/Title';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Register from './components/Register';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import Navbar from './components/Navbar';
+import PrivateRoute from './utils/PrivateRoute';
+import NoteProvider from './context/NoteContext';
 
-function App() {
+const App = () => {
   return (
-    <CodeState>
-      
-    <div className="">
-      <BrowserRouter>
-   <Dashboard/>
-        <Alert message= "this is the amazing website the coder's"/>
+    <NoteProvider>
+    <Router>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        {/* <Route path='/addjewellery' element={<Addjewellery/>}/> */}
-        <Route path='/edittitle' element={<Edittitle/>}/>
-        <Route path='/herosection' element={<Hero/>}/>
-        {/* <Route path='/aboutsection' element={<Aboutedit/>}/>
-        <Route path='/titlesection' element={<Title/>}/> */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/" element={<div>Welcome to the JWT Auth App!</div>} />
       </Routes>
-      </BrowserRouter>
-    </div>
-    </CodeState>
+    </Router>
+    </NoteProvider>
   );
-}
+};
 
 export default App;

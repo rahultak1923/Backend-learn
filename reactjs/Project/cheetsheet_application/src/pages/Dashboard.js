@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const Dashboard = () => {
   let location = useLocation();
@@ -21,12 +21,12 @@ const Dashboard = () => {
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <Link class={`nav-link ${location.pathname==="/"?"active":""}`} to="/">
+          <a class={`nav-link ${location.pathname==="/"?"active":""}`} href="/">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Your Code's</span>
-          </Link>
+          </a>
         </li>
         {/* <li class="nav-item">
           <a class={`nav-link ${location.pathname==="/addjewellery"?"active":""}`} href="/addjewellery">
@@ -45,12 +45,12 @@ const Dashboard = () => {
           </a>
         </li> */}
         <li class="nav-item">
-          <Link class={`nav-link ${location.pathname==="/herosection"?"active":""}`} to="/herosection">
+          <a class="nav-link " href="/herosection">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Add Code's</span>
-          </Link>
+          </a>
         </li>
         
         <li class="nav-item">
